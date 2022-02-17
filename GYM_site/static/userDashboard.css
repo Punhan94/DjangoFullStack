@@ -1,0 +1,109 @@
+.user-table{
+    margin: 20px auto;
+    width: 80%;
+}
+
+.user-dashboard-header{
+    margin: 40px auto;
+    width: 80%;
+}
+.btn-create-article{
+    padding: 10px 15px ;
+    border-radius: 10px;
+    background-color: black;
+    color: white;
+}
+.user-dahsboard-user-details{
+    overflow: hidden;
+    margin-top: 20px;
+    background-color: black !important;
+    width: 100%;
+    padding: 20px;
+}
+.user-dahsboard-user-detail{
+    width: 100%;
+    color: white !important;
+    display: flex;
+}
+.user-dahsboard-user-detail h5{
+    width: 50%;
+}
+#form-userArticles-h1{
+    text-align: center;
+}
+.fa-trash-alt{
+    padding: 10px;
+    border-radius: 5px;
+    background-color: red;
+    color: white;
+}
+.fa-edit{
+    padding: 10px;
+    border-radius: 5px;
+    background-color: green;
+    color: white;
+}
+#filter{
+    width: 100%;
+    display: flex;
+    justify-content: end;
+}
+.dropdown-shopping{
+    position: relative;
+}
+.dropdownhide-shopping{
+    position: absolute;
+    right: 0;
+    top: 1.8em;
+    background-color: #dcdcdc;
+    padding: 1em;
+    opacity: 0;
+    transition: 0.4s;
+    visibility: hidden;
+    z-index: 99;
+    display: flex;
+    flex-direction: column;
+    width: max-content;
+    border-bottom: 2px solid #000000;
+    text-align: left;
+}
+
+.dropdownhide-shopping>li>a{
+    font-weight: bolder;
+    color: #0d6efd;
+}
+.dropdown-shopping:hover{
+    cursor: pointer;
+}
+.shopping-views{
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+.filter-header i{
+    font-size: 25px;
+    color: white;
+}
+
+@media (max-width:670px){
+    .user-dahsboard-user-detail h5{
+        width: 100%;
+    }
+}
+@media (max-width:450px){
+    .btn-create-article{
+        font-size: 12px;
+        padding: 5px ;
+        text-align: center;
+}
+.fa-trash-alt{
+    padding: 5px;
+    font-size: 12px;
+}
+.fa-edit{
+    padding: 5px;
+    font-size: 12px;
+}
+}
+
+

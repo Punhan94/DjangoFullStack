@@ -1,0 +1,272 @@
+.sport{
+    width: 100%;
+    margin: 20px 0;
+}
+.sports-body{
+    width: 100%;
+    height: max-content;
+    position: relative;
+}
+.gender-section{
+    width: 40%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+}
+.gender-section label{
+    font-size: 20px;
+}
+#sports-body-img{
+    display: block;
+    width: 80% !important;
+    margin: 0 auto;
+    height: auto;
+    z-index: -1;
+}
+.human{
+    position: absolute;
+    height: auto;
+}
+.legs-a{
+    opacity: 0;
+}
+.legs-a:hover{
+    cursor: pointer;
+    opacity: 1;
+}
+#legs-front{
+    width: 18.4% ;
+    top: 41.4%;
+    left: 25.4%;
+}
+#legs-back{
+    top: 43.3%;
+    width: 19.5% ;
+    right: 23%;
+}
+.shoulder-a{
+    opacity: 0;
+}
+.shoulder-a:hover{
+    opacity: 1;
+}
+.shoulder:hover{
+    cursor: pointer;
+    opacity: 1 !important;
+}
+#shoulder-front-1{
+    top: 20.5%;
+    width: 5%;
+    left: 27.2%;
+}
+#shoulder-front-2{
+    top: 20.3%;
+    width: 4.7%;
+    left: 37.15%;
+}
+#shoulder-back-1{
+    top: 19.05%;
+    width: 5%;
+    right: 36.05%;
+}
+#shoulder-back-2{
+    top: 19.05%;
+    width: 5%;
+    right: 25.4%;
+}
+.arm-a{
+    opacity: 0;
+}
+.arm-a:hover{
+    opacity: 1;
+}
+#arm-front-1{
+    top: 26.95%;
+    width: 6.6%;
+    left: 23.35%;
+}
+#arm-front-2{
+    top: 26.75%;
+    width: 6.55%;
+    left: 39.25%;
+}
+#arm-back-1{
+    top: 24.8%;
+    width: 6.97%;
+    right: 38.2%;
+}
+#arm-back-2{
+    top: 24.7%;
+    width: 6.85%;
+    right: 21.45%;
+}
+.chest-a{
+    opacity: 0;
+}
+.chest-a:hover{
+    opacity: 1;
+}
+#chest{
+    top: 21.95%;
+    width:10.4%;
+    left: 29.4%;
+}
+.human-back-a{
+    opacity: 0;
+}
+.human-back-a:hover{
+    opacity: 1;
+}
+#human-back{
+    top: 17.87%;
+    width:10.63%;
+    right: 27.93%;
+}
+.neck-a{
+    opacity: 0;
+}
+.neck-a:hover{
+    opacity: 1;
+}
+#neck-front{
+    top: 17.25%;
+    width:6.8%;
+    left: 31.24%;
+}
+#neck-back{
+    top: 15.3%;
+    width:5.8%;
+    right: 30.44%;
+}
+.abdomen-a{
+    opacity: 0;
+}
+.abdomen-a:hover{
+    opacity: 1;
+}
+#abdomen{
+    top: 28%;
+    width:9.5%;
+    left: 29.9%;
+}
+
+/* FEMALE */
+.sports-body-female{
+    width: 100%;
+    height: max-content;
+    position: relative;
+}
+#sports-body-img{
+    display: block;
+    width: 80% !important;
+    margin: 0 auto;
+    height: auto;
+    z-index: -1;
+}
+
+#female-legs-front{
+    width: 12.3% ;
+    top: 46%;
+    left: 27.65%;
+}
+#female-legs-back{
+    top: 50.6%;
+    width: 10.5% ;
+    right: 28.678%;
+}
+
+#female-shoulder-front-1{
+    top: 24.25%;
+    width: 3.3%;
+    left: 27.65%;
+}
+#female-shoulder-front-2{
+    top: 24.25%;
+    width: 3.3%;
+    left: 36.6%;
+}
+#female-shoulder-back-1{
+    top: 23.2%;
+    width: 3.8%;
+    right: 36.7%;
+}
+#female-shoulder-back-2{
+    top: 23.2%;
+    width: 3.8%;
+    right: 27.36%;
+}
+
+#female-arm-front-1{
+    top: 29.39%;
+    width: 5.1%;
+    left: 24.725%;
+}
+#female-arm-front-2{
+    top: 29.38%;
+    width: 5.1%;
+    left: 37.8%;
+}
+#female-arm-back-1{
+    top: 28.5%;
+    width: 4.3%;
+    right: 38.215%;
+}
+#female-arm-back-2{
+    top: 28.6%;
+    width: 4.3%;
+    right: 25.32%;
+}
+
+#female-chest{
+    top: 25.35%;
+    width:9.8%;
+    left: 28.9%;
+}
+
+#female-human-back{
+    top: 22.29%;
+    width:8.8%;
+    right: 29.475%;
+}
+
+#female-neck-front{
+    top: 22%;
+    width:6.1%;
+    left: 30.73%;
+}
+#female-neck-back{
+    top: 20.5%;
+    width:6.1%;
+    right: 30.858%;
+}
+#female-abdomen{
+    top: 32.55%;
+    width:4.6%;
+    left: 31.5%;
+}
+
+
+.sports_detail-body{
+    margin-top: 50px;
+}
+.sport_video>h1{
+    text-align: center;
+}
+.sport_video{
+    margin: 0 auto;
+    width: 80%;
+}
+.sport-video-control{
+    margin: 15px auto;
+    width: 70%;
+}
+
+.sport-hidden{
+    display: none;
+}
+
+@media (max-width:750px){
+    .sport-video-control{
+        width: 100%;
+    }
+}

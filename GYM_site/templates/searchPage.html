@@ -1,0 +1,78 @@
+{% extends "layout.html" %}
+
+
+{%  block css %}
+
+{% endblock css %}
+
+
+{% block body %}
+<div style='min-height:50vh' class='container mb-5 mt-5'>
+    <h1 class='mb-4, text-center'>Axtarışın nəticəsi</h1>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Şəkil</th>
+      <th scope="col">Başlıq</th>
+      <th scope="col">Keçid</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+{% if searched_articles %}
+    
+    {% for i in searched_articles %}
+    <tr>
+        <td scope="row"><img style='height:60px; width:auto' src="{{i.article_images.url}}" alt=""></td>
+        <td scope="row">{{i.title}}</td>
+        <td scope="row"><a href="/article/viewArticle/{{i.id}}">Ətraflı</a></td>
+    </tr>
+    {% endfor %}
+    
+{% endif %}
+
+{% if searched_products %}
+    
+    {% for i in searched_products %}
+    <tr>
+        <td scope="row"><img style='height:60px; width:auto' src="{{i.image.url}}" alt=""></td>
+        <td scope="row">{{i.title}}</td>
+        <td scope="row"><a href="/shoppings/product/{{i.id}}">Ətraflı</a></td>
+    </tr>
+    {% endfor %}
+    
+{% endif %}
+
+{% if searched_gymcenter %}
+    
+    {% for i in searched_gymcenter %}
+    <tr>
+    {% if i.center_logo %}
+        <td scope="row"><img style='height:60px; width:auto' src="{{i.center_logo.url}}" alt=""></td>
+    {% else %}
+        <td scope="row"><img style='height:60px; width:auto' src="{{i.center_images.url}}" alt=""></td>
+    {% endif %}
+        <td scope="row">{{i.center_name}}</td>
+        <td scope="row"><a href="/gymCenter/{{i.id}}">Ətraflı</a></td>
+    </tr>
+    {% endfor %}
+    
+{% endif %}
+
+{% if searched_sports %}
+
+    {% for i in searched_sports %}
+        <tr>
+            <td scope="row"><img style='height:60px; width:auto' src="" alt="Şəkil yoxdur"></td>
+            <td scope="row">{{i.title}}</td>
+            <td scope="row"><a href="/sports/axtaris/{{i.id}}">Ətraflı</a></td>
+        </tr>
+    {% endfor %}
+
+{% endif %}
+
+  </tbody>
+</table>
+
+</div>
+{% endblock %}

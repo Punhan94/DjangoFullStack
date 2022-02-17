@@ -1,0 +1,240 @@
+
+.idealceki-body{
+    width: 100%;
+    margin-bottom: 50px;
+}
+.idealceki-h1{
+    color: black;
+    margin: 30px 0;
+    text-align: center;
+    font-weight: bolder;
+}
+.idealceki-calculator{
+    max-width: 1100px;
+    width: 80%;
+    margin:  0 auto;
+    display: flex;
+    justify-content: center;
+}
+.idealceki-title{
+    max-width: 1100px;
+    width: 80%;
+    margin: 0 auto;
+    background-color: rgb(218, 218, 218);
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px solid rgb(72, 72, 72) ;
+    border-top: 1px solid rgb(72, 72, 72) ;
+}
+.idealceki-title-right{
+    border-left: 1px solid black;
+}
+.idealceki-title-right, .idealceki-title-left{
+    width: 45%;
+    padding: 20px;
+}
+.idealceki-title h3{
+    text-align: center;
+    font-weight: 900;
+    margin-bottom: 10px;
+}
+.vki-gender-area{
+    display: flex;
+    justify-content: space-evenly;
+    width: 20%;
+}
+
+.idealceki-secimler{
+    width: 50%;
+}
+.idealceki-calculator{
+    margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+}
+.vki-man {
+    display: inline-block;
+    width: 53px;
+    height: 209px;
+    background-image: url(/media/man.png);
+    cursor: pointer;
+}
+
+.vki-man.active {
+    background-image: url(/media/man-active.png);
+}
+.vki-woman.active {
+    background-image: url(/media/woman-active.png);
+}
+.vki-woman {
+    display: inline-block;
+    width: 46px;
+    height: 207px;
+    margin-top: 2px;
+    cursor: pointer;
+    background-image: url(/media/woman.png);
+}
+
+.slidecontainer1, .slidecontainer2 {
+    width: 100%;
+  }
+  .slidecontainer1 h3, .slidecontainer2 h3 {
+    margin-bottom: 5px !important;
+  }
+  .idealceki-input{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 20px 0;
+  }
+  .slider {
+    -webkit-appearance: none;  
+    appearance: none;
+    width: 70%; 
+    height: 25px; 
+    background: #d3d3d3; 
+    outline: none;
+    opacity: 0.7; 
+    -webkit-transition: .2s; 
+    transition: opacity .2s;
+  }
+  
+
+  .slider:hover {
+    opacity: 1; 
+  }
+  
+  .slider::-webkit-slider-thumb {
+    -webkit-appearance: none; 
+    appearance: none;
+    width: 25px; 
+    height: 25px; 
+    background: #04AA6D; 
+    cursor: pointer; 
+  }
+  
+  .slider::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    background: #04AA6D; 
+    cursor: pointer; 
+  }
+
+  table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+  }
+  th{
+      background-color: #d3d3d3;
+      text-align: center;
+  }
+  th , td{
+      padding: 10px;
+  }
+#heightspan, #weightspan{
+    margin-left: 20px;
+    font-size: 24px;
+    font-weight: bolder;
+}
+  .vkibtn{
+      border-radius: 5px;
+      padding: 5px 10px ;
+      background-color: green;
+      color: white;
+      border: none;
+  }
+
+#vki-h2{
+    text-align: center;
+}
+.cavablar{
+    width: 80%;
+    padding: 30px;
+    margin: 20px auto;
+    background-color: rgb(218, 218, 218);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+.circle-div{
+    margin-top: 15px;
+    padding: 20px;
+    width: 20%;
+    overflow: hidden;
+    background-color: green;
+    color: white;
+    display: flex;
+    text-align: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+#VKI-yoxla{
+    width: 100%;
+    text-align: center;
+}
+.hidden{
+    display: none;
+}
+.hesablama-bolmesi{
+    width: 60%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+@media (max-width:800px){
+    .idealceki-title-right p{
+        font-size: 14px !important;
+
+    }
+}
+
+@media (max-width:700px){
+    .idealceki-calculator{
+        align-items: center;
+        justify-content: center;
+    }
+    .boy-kilo-indeksi-melumat h2{
+        width: 100%;
+    }
+    .boy-kilo-indeksi-melumat{
+        margin-bottom: 25px;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        width: 100% !important;       
+        order: -1;
+    }
+    .idealceki-secimler{
+        width: 100% !important;
+    }
+    .idealceki-title-right p{
+        font-size: 12px !important;
+
+    }
+}
+@media (max-width:600px) {
+    .idealceki-title{
+        display: block;
+    }
+    .idealceki-title-right, .idealceki-title-left{
+        border: none !important;
+        width: 100% !important;
+    }
+    .idealceki-title-right{
+        border-top: 1px solid black !important;
+    }
+}
+
+@media (max-width:350px) {
+    .idealceki-h1{
+        font-size: 25px;
+    }
+}
+@media (max-width:300px) {
+    .idealceki-title{
+        display: none !important;
+    }
+}

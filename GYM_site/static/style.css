@@ -1,0 +1,154 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200&display=swap');
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box !important;
+  list-style: none;
+  text-decoration: none !important;
+  font-family: 'Poppins', sans-serif;
+  
+}
+
+.footer{
+  background-color: black;
+  padding: 30px 0;
+}
+.footer-inner{
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+.footer{
+  color: white !important;
+}
+#cke_description {
+  width: auto !important;
+}
+.footer-left,.footer-center,.footer-right{
+  width: 33%;
+  padding: 10px;
+}
+.footer-center-article{
+  width: 80%;
+  margin: 0 auto;
+}
+.footer-center-article small{
+  color: #8d8b8b;
+}
+#footer-small{
+  display: block;
+  margin: 3px 0;
+  font-size: 16px;
+}
+#footer-small-date{
+  font-size: 12px;
+}
+.footer-social{
+  display: flex;
+  flex-wrap: wrap;
+  width: 60%;
+  margin: 0 auto;
+}
+.footer-social>a{
+  width: 100%;
+  margin: 5px 0;
+}
+
+.footer-social>a>i{
+  font-size: 20px;
+}
+
+.footer *{
+  color: white;
+}
+.footer h4{
+  text-align: center;
+  margin-bottom: 20px;
+}
+.footer-center{
+  border-left: 2px solid white;
+  border-right: 2px solid white ;
+}
+#articleHoverLike:hover{
+  transform: scale(1.5) ;
+}
+.one-product{
+  margin-top: 20px;
+}
+
+.one-product h5:hover{
+  color: blue;
+}
+.bold-p{
+    font-weight: 1000;
+    margin-top: 5px;
+    margin-bottom: 0 !important;
+}
+.icon-contact{
+    height: 46px;
+    width: 52px;
+    font-size: 20px;
+    color: #e02529;
+    line-height: 46px;
+    text-align: center;
+    float: left;
+    background-color: black;
+    clip-path: polygon(0% 0%, 85% 0%, 100% 50%, 85% 100%, 0% 100%)
+}
+.icon-contact>i{
+    color: white;
+}
+.detail-contact{
+    height: 46px;
+    background-color: black;
+    line-height: 46px;
+    padding-left: 28px;
+    padding-right: 30px;
+    font-size: 14px;
+    color: #ffffff;
+    clip-path: polygon(0% 0%, 100% 0, 100% 100%, 0 100%, 5% 50%);
+    color: white;
+}
+.footer-center-article:hover{
+  transform: scale(1.05);
+} 
+.footer-center-article:hover h6{
+  color: blue;
+}
+.footer-right a:hover i{
+  color: blue;
+  transform: scale(1.2);
+}
+
+@media (max-width:660px) {
+  .footer-inner{
+    width: 90%;
+    margin: 0 auto;
+    display: block;
+  }
+  .footer-inner > div{
+    width: 100%;
+  }
+  .footer-center{
+    border: none !important;
+    border-top: 2px solid white !important;
+    border-bottom: 2px solid white !important ;
+  }
+  .footer a, .footer i{
+    font-size: 17px !important;
+  }
+  .footer small{
+    font-size: 10px !important;
+  }
+  #footer-small{
+    font-size: 14px !important;
+  }
+}
+@media (max-width:380px) {
+  .pagination{
+    flex-wrap: wrap !important;
+  }
+}
+

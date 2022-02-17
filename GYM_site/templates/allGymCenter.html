@@ -1,0 +1,66 @@
+{% extends 'layout.html' %}
+
+{%  block css %}
+<link rel="stylesheet" href="/static/allarticle.css">
+<link rel="stylesheet" href="/static/gymall.css">
+{% endblock css %}
+
+{% block body %}
+<div class='gym-all-header'>
+    <h1 class="basliq">Bütün idman zallarımız</h1>
+</div>
+<div class='meqaleler-container'>
+
+<div  class="meqaleler d-flex flex-wrap">
+        {% for gym in gymAll %}
+            <div class="meqale" >
+                <div class="sekil">
+                {% if gym.center_logo %}
+                    <img id='gym-photos' src="{{ gym.center_logo.url }}" alt="">
+                    <a id='gym-photos-hover'  href="/gymCenter/{{ gym.id }}">
+                        Ətraflı məlumat
+                    </a>
+                {% else %}
+                    <img id='gym-photos' src="{{ gym.center_images.url }}" alt="">
+                    <a id='gym-photos-hover'  href="/gymCenter/{{ gym.id }}">
+                        Ətraflı məlumat
+                    </a>
+                {% endif %} 
+                </div>
+                <a   href="/gymCenter/{{ gym.id }}">
+                <div class="yazilar ">
+                    <h4 >{{ gym.center_name }}</h4>
+                    <p>
+                        {{ gym.detail | safe | truncatewords:6 }}
+                    </p>
+                    
+                    </div>
+                     </a>
+                </div>
+        {% endfor %}
+</div>
+</div>
+<nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-center">
+    <li class="page-item {% if gymAll.has_previous %} {% else %} disabled {% endif %} ">
+      <a class="page-link" href="?page=1" tabindex="-1" aria-disabled="true">İlk</a>
+    </li>
+    {% if gymAll.has_previous %}
+    <li class="page-item ">
+      <a class="page-link" href="?page={{gymAll.previous_page_number}}" tabindex="-1" aria-disabled="true">Əvvəlki</a>
+    </li>
+    {% endif %}
+      <li class="page-item disabled"><a class="page-link " href="">
+         Olduğunuz {{gymAll.number}}/{{gymAll.paginator.num_pages}}
+      </a></li>
+      {% if gymAll.has_next %}
+    <li class="page-item">
+      <a class="page-link" href="?page={{gymAll.next_page_number}}">Növbəti</a>
+    </li>
+    <li class="page-item">
+      <a class="page-link" href="?page={{gymAll.paginator.num_pages}}">Sonuncu</a>
+    </li>
+    {% endif %}
+  </ul>
+</nav>
+{%  endblock %}

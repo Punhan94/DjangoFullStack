@@ -1,0 +1,115 @@
+{% extends "layout.html" %}
+
+
+{%  block css %}
+    <link rel="stylesheet" href="/static/userDashboard.css">
+     <link rel="stylesheet" href="/static/shopcart.css">
+{% endblock css %}
+
+
+{% block body %}
+
+
+    <div style='text-align:center' class="user-dashboard-header">
+        <h3 >Səbətdəki mallar</h3>
+
+    </div>
+
+  {% if shopCarts %}
+<div class=' products-shopcart '>
+  {% for shopCart in shopCarts %}
+
+<div  class='one-product'>
+   <div  class='product-image'>
+   <img  src='{{shopCart.product.image.url}}'>
+   </div>
+   <div  class='product-context'>
+    <h5>{{ shopCart.product.title }}</h5>
+    <p>Qiyməti: {{ shopCart.price|linebreaksbr }} AZN</p>
+    <p>Cəmi: {{ shopCart.amount }} AZN</p>
+    <form class='form-addtocart' method='POST' action="/order/editcart/{{shopCart.product.id}}/">
+       {% csrf_token %}
+       <h6 id='stok-amount-h6'>Stokda olan : {{shopCart.product.amount}}</h6>
+        <input style='width:50px' class="form-control text-center me-3" 
+        id="inputQuantity" name='quantity' type="number" min='1' 
+        value={{shopCart.quantity}} max={{shopCart.product.amount}} 
+        style="max-width: 3rem" />
+          <button class="btn btn-success">
+          Dəyişdir
+          </button>
+    </form>
+    <button href="" class="btn btn-danger">
+      <a style="color: white" href="/order/deleteCart/{{ shopCart.product.id }}">Sil</a>
+    </button>
+   </div>
+   </div>
+
+  {% endfor %}
+  {% else %}
+  <div class='text-center'>
+  {% if messages %}
+            <ul class="messages">
+            {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+            </ul>
+  {% endif %}
+  <h2 style=' color:red'>Səbət boşdur</h2>
+
+   
+  {% endif %}
+  </div>
+</div>
+</div>
+
+<div>
+
+</div>
+{% if total %}
+<div class='amount-total'>
+<h1 style='text-align:center'>Səbətin cəmi</h1>
+<div class='addtocart-total'>
+<h3>Ümumi məbləğ : {{total}} AZN </h3>
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" 
+        data-bs-target="#exampleModal">Ödəniş</button>
+{% endif %}
+</div>
+</div>
+
+
+<div style='z-index:9999999999999999999999999999999999999999999999999' class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" 
+     aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Sifarişi tamamlayın</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" 
+                aria-label="Close"></button>
+      </div>
+      <form method="POST">
+      <div class="modal-body">
+      <div class='modal-body-shopcarts'>
+        {% csrf_token %}
+            {% if shopCarts %}
+            {% for shopcart in shopCarts %}
+            {% if shopcart.quantity <= shopcart.product.amount %}
+            
+            {% else %}
+            {{shopcart.product.title}}-dan stokda {{shopcart.product.amount}} qədər qalmışdır
+            {% endif %}
+            {% endfor  %}
+            {% endif %}
+            </div>
+            {{ orderForm.as_p }}
+      </div>
+      <div  class="modal-footer">
+        <button type="button" class="btn btn-secondary" 
+                data-bs-dismiss="modal">Ləğv et</button>
+        <button type="submit" class="btn btn-primary">Ödəmək</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

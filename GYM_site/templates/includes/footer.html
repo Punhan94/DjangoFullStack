@@ -1,0 +1,50 @@
+ <div class="footer">
+    <div class="footer-inner">
+    <div class="footer-left">
+        <h4>Sayt haqqında</h4>
+        <p>Bu sayt sizlərə idman zalları, idmanla əlqəli məqalələr və insanların
+            bir-birinə məsləhətləri üçün hər bir şəraiti yaratmaqdadır. Həmçinin
+        idmanla bağlı geyim və ya idman alətlərini də bu sayt vasitəsi ilə
+        əldə edə biləcəksiniz</p>
+    </div>
+
+    <div class="footer-center">
+        <h4>Ən son yazılanlar</h4>
+    <div class="footer-center-articles">
+        {% for i in formm %}
+            
+                <div class="footer-center-article">
+                <a href="/article/viewArticle/{{ i.id }}">
+                <h6 style="margin-bottom: 0; margin-top: 8px">{{ i.title | truncatewords:4| safe }}</h6>
+                <small id='footer-small'>{{ i.content| truncatewords:4| safe }}  </small>
+                </a>
+                <small id='footer-small-date'>{{ i.created_date }}</small>
+                </div>
+            
+            
+        {% endfor %}
+    </div>
+    </div>
+
+    <div class="footer-right">
+        <div>
+            <h4>Sosial səbəkədə bizi izləyin</h4>
+            <div class="footer-social">
+                <a href="https://www.facebook.com/codersaz/">
+                    <i class="fab fa-facebook-square"> Facebook</i>
+                </a>
+                <a href="https://twitter.com/">
+                    <i class="fab fa-twitter-square"> Twitter</i>
+                </a>
+                <a href="https://www.instagram.com/codersazerbaijan">
+                    <i class="fab fa-instagram"> İnstagram</i>
+                </a>
+                <a href="https://az.linkedin.com/company/codersazerbaijan">
+                    <i class="fab fa-linkedin"> Linkedin</i>
+                </a>
+            </div>
+            
+        </div>
+    </div>
+    </div>
+</div>

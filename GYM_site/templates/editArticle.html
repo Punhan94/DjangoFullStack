@@ -1,0 +1,25 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+<div  class='container mt-5 mb-5'>
+    <div style='overflow: hidden; width:80% !important; margin: 0 auto'> 
+        <h3>Meqaleni deyise bilersiniz</h3>
+        <br>
+    <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.media }}
+    {{ form.as_p }}
+        <img src="" alt="">
+    <button type="submit" class="btn btn-success">Dərc et</button>
+</form>
+    </div>
+    
+</div>
+
+{%  endblock %}
+
+
+
+
+

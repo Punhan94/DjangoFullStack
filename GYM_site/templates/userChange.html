@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{%  block css %}
+    <link rel="stylesheet" href="/static/userRegister.css">
+{% endblock css %}
+
+{% block body %}
+
+<div class='user_change'>
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+    {% if change_form %}
+        <form class="form-user" method='post'>
+            {% csrf_token %}
+            {{ change_form.as_p }}
+            <button class="btn" id="userSubmitButton" type="submit">Yadda saxla</button>
+        </form>
+    {% endif %}
+
+    {% if passwordChange_form %}
+        <form class="form-user-password" method='post'>
+            {% csrf_token %}
+            {{ passwordChange_form.as_p }} 
+          
+            <button class="btn" id="userSubmitButton" type="submit">Yadda saxla</button>
+        </form>
+    {% endif %}
+    </div>
+{% endblock %}

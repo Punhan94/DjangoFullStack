@@ -1,0 +1,128 @@
+{% extends "layout.html" %}
+{%  block css %}
+<link rel="stylesheet" href="/static/allarticle.css">
+{% endblock css %}
+{% block body %}
+
+<div class='header-allarticle'>
+    <h1 class="basliq">Bütün məqalələr</h1>
+</div>
+
+<div class='meqaleler-container'>
+<div class='article-header'>
+    
+
+<div class='filter'>
+<div></div>
+<ul id='filter'>
+         <li style='z-index:99999999999999999999999999' class="dropdown-shopping">
+                    <div class='filter-header'>
+                  <h5>Filtrlə<i class="fas fa-chevron-down"></i></h5>
+                    </div>
+                    <ul id='dropdownhide-shopping' class="dropdownhide-shopping">
+                        <li>
+                           <a href="?filter=article_rate">Reytinqə görə(Artan)</a>                        
+                        </li>
+                        <li>
+                           <a href="?filter=-article_rate">Reytinqə görə(Azalan)</a>                        
+                        </li>
+                        <li>
+                           <a href="?filter=articles_likes">Bəyənmə sayı(Artan)</a>                        
+                        </li>
+                        <li>
+                           <a href="?filter=-articles_likes">Bəyənmə sayı(Azalan)</a>                        
+                        </li>
+                        <li>
+                           <a href="?filter=created_date">İlk yüklənən</a>                        
+                        </li>
+                        <li>
+                           <a href="?filter=-created_date">Yeni yüklənən</a>                        
+                        </li>
+                        <li>
+                           <a href="?filter=article_views">Baxış sayı(Artan)</a>                        
+                        </li>
+                        <li>
+                           <a href="?filter=-article_views">Baxış sayı(Azalan)</a>                        
+                        </li>
+                    </ul>
+                </li>
+</ul>
+
+</div>
+
+</div>
+    {% if allarticle  %}
+    <div  class="meqaleler d-flex flex-wrap">
+        {% for article in allarticle %}
+            <div class="meqale" >
+            
+                <div class="sekil">
+                    <img id='article-images' src="{{ article.article_images.url }}" alt="">
+                    <div class='articleHoverImages'>
+                        <div class='like-problem m-lg-1'>
+                    {% if likeArticles %}
+                    {% for like in likeArticles  %}
+                    {% if article == like.article %}
+                        <a href='/article/unlikeArticle/{{article.id}}' ><i class="fas fa-heart"></i></a>
+                        {{break}}
+                    {% else %} 
+                    {% endif %}
+                    {% endfor %}
+                    {% else %}
+                    {% endif %}
+                    <a href='/article/likeArticle/{{article.id}}' ><i class="far fa-heart"></i></a>
+                    </div>
+                    </div>
+                </div>
+
+                <div class="yazilar yazilar-article d-flex flex-wrap align-items-center">
+                    <h4 style='width:100%' >{{ article.title | truncatewords:6 }}</h4>
+                    {% if article.rated %}
+                    <div stye='width:100%' class="rating mt-1 mb-1">
+                        <i class="rating__star {% if article.rated >= 1 %}  fas {% else %} far {% endif %}fa-star"></i>
+                        <i class="rating__star {% if article.rated >= 2 %}  fas {% else %} far {% endif %}fa-star"></i>
+                        <i class="rating__star {% if article.rated >= 3 %}  fas {% else %} far {% endif %}fa-star"></i>
+                        <i class="rating__star {% if article.rated >= 4 %}  fas {% else %} far {% endif %}fa-star"></i>
+                        <i class="rating__star {% if article.rated >= 5 %}  fas {% else %} far {% endif %}fa-star"></i>
+                    </div>
+                    {% endif %}
+                    <div style='width:100%' class='d-flex justify-content-between'>
+                        <span>Bəyənilmə:{{article.articles_likes}}</span>
+                        <span>Baxış sayı:{{article.article_views}}</span>
+                    </div>
+                    <div><small>{{ article.created_date|date:"d M Y" }}</small>,
+                    <small>{{ article.author.first_name }}</small>
+                    <a style='font-weight:bolder' class="btn btn-link"  href="/article/viewArticle/{{ article.id }}">
+                        Məqaləni oxu 
+                    </a></div>
+                    
+                </div>
+            </div>
+        {% endfor %}
+</div>
+    {% endif %}
+        </div>
+        <nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-center">
+    <li class="page-item {% if allarticle.has_previous %} {% else %} disabled {% endif %} ">
+      <a class="page-link" href="?page=1" tabindex="-1" aria-disabled="true">İlk</a>
+    </li>
+    {% if allarticle.has_previous %}
+    <li class="page-item ">
+      <a class="page-link" href="?page={{allarticle.previous_page_number}}" tabindex="-1" aria-disabled="true">Əvvəlki</a>
+    </li>
+    {% endif %}
+      <li class="page-item disabled"><a class="page-link " href="">
+         Olduğunuz {{allarticle.number}}/{{allarticle.paginator.num_pages}}
+      </a></li>
+      {% if allarticle.has_next %}
+    <li class="page-item">
+      <a class="page-link" href="?page={{allarticle.next_page_number}}">Növbəti</a>
+    </li>
+    <li class="page-item">
+      <a class="page-link" href="?page={{allarticle.paginator.num_pages}}">Sonuncu</a>
+    </li>
+    {% endif %}
+  </ul>
+</nav>
+{% endblock %}

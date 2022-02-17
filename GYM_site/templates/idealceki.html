@@ -1,0 +1,134 @@
+{% extends "layout.html" %}
+
+
+{%  block css %}
+     <link rel="stylesheet" href="/static/idealceki.css">
+{% endblock css %}
+
+
+
+{% block body %}
+
+<div class='idealceki-body'>
+
+<h1 class='idealceki-h1'>İdeal çəki hesablama</h1>
+<div class='idealceki-title'>
+    <div class='idealceki-title-left'>
+        <h3>
+            BOY KİLO İNDEKSİ
+        </h3>
+        <p>
+            İdeal çəkini hesablamaq üçün Boy Kilo İndeksindən istifadə edilir.
+            Bu indeks bədəndəki təxmini yağ kütləsini göstərən bir dəyərdir.
+        </p>
+    </div>  
+    <div class='idealceki-title-right'>
+        <h3>
+            BOY KİLO İNDEKSİ HESABLANMASI
+        </h3>
+        <p>
+            Boy Kilo İndeksi hesablamasında boy-kilo nisbəti istifadə edilir. Yəni Boy Kilo 
+            İndeksi dəyəri, boyunuza görə ideal kilonuzun neçə olmalı olduğunu göstərir. 
+            Bədən ağırlığınız, boyunuzun kvadratına bölünərək boy kilo cədvəli üzərində 
+            ideal kilonuz hesablanır.
+        </p>
+    </div>
+</div>
+<div class='idealceki-calculator'>
+<div class='hesablama-bolmesi'>
+<div class="vki-gender-area">
+        <input type="hidden" id="vki-gender" value="man">
+		<div  class="vki-gender">
+			<div id='vki-man' class="vki-man active" gender="man"></div>
+		</div>
+		<div  class="vki-gender">
+			<div id='vki-woman' class="vki-woman" gender="woman"></div>
+		</div>
+</div>
+
+<div class='idealceki-secimler'>
+<div class="slidecontainer1">
+  <h3>Boyunuzu seçin</h3>
+  <div class='idealceki-input'>
+  <input type="range" min="100" max="260" value="160" class="slider" id="height">
+  <span id='heightspan'></span>
+  </div>
+</div>
+<div class="slidecontainer2">
+  <h3>Çəkinizi seçin seçin</h3>
+  <div class='idealceki-input'>
+    <input type="range" min="30" max="240" value="60" class="slider" id="weight">
+    <span id='weightspan'></span>
+  </div>
+  
+</div>
+<button class='vkibtn' onClick="vkiHesabla()">Hesabla</button>
+</div>
+</div>
+<div class='boy-kilo-indeksi-melumat'>
+<h2 id='vki-h2'>BOY KİLO İNDEKSİ</h2>
+<table>
+    <tr>
+        <th>
+            Vəziyyət
+        </th>
+        <th>
+            İndex
+        </th>
+    </tr>
+    <tr>
+        <td>
+            İdeal Kilonun Altı
+        </td>
+        <td>
+            < 18,49
+        </td>
+    </tr>
+    <tr>
+        <td>
+            İdeal Kilo
+        </td>
+        <td>
+            18.5 - 24,99
+        </td>
+    </tr>
+    <tr>
+        <td>
+            İdeal Kilonun Üstü
+        </td>
+        <td>
+            25 - 29,99
+        </td>
+    </tr>
+    <tr>
+        <td>
+            İdeal Kilonun Çox Üstü
+        </td>
+        <td>
+            > 30
+        </td>
+    </tr>
+</table>
+</div>
+
+</div>
+
+<div id='cavablar' class='cavablar hidden'>
+    <h2  id="VKI-yoxla"></h2>
+    <div class='circle-div'>
+        <h5>BOY KİLO İNDEKSİ</h5>
+        <span id="VKI"></span> kq/m2
+    </div>
+    <div class='circle-div'>
+        <h5>İDEAL BƏDƏN AĞIRLIĞI</h5>
+        <span id="IVA"></span>kq
+    </div>
+    <div class='circle-div'>
+        <h5>YAĞSIZ BƏDƏN AĞIRLIĞI</h5>
+        <span id="YVA"></span> kq
+    </div>
+</div>
+
+</div>
+
+{% endblock %}

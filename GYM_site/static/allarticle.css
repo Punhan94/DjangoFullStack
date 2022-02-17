@@ -1,0 +1,228 @@
+.header-allarticle{
+  background-image: url('../media/man-deadlift-1296x728-header.jpg'),linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5));
+  background-blend-mode: overlay;
+  background-size:cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin-bottom: 50px;
+  width: 100%;
+  padding: 85px 0;
+  color: white;
+  text-align: center;
+}
+.meqaleler-container{
+    width: 80%;
+    margin: 40px auto;
+}
+.article-header{
+    text-align: center;
+}
+
+#search-button-articles{
+    border: none;
+    background-color: transparent;
+}
+.meqaleler{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.meqale{
+    width: 32%;
+    max-width: 470px;
+    min-width: 250px !important;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    display: flex;
+    padding: 1em;
+    justify-content: space-between;
+}
+.yazilar-article{
+    padding: 10px;
+    border-right: 1px  solid black ;
+    border-left: 1px  solid black ;
+    border-bottom: 1px  solid black ;
+}
+.yazilar-article:hover {
+    background-color: black !important;
+    color: white;
+}
+
+.yazilar>h4{
+    font-weight: bolder;
+    color: black;
+}
+.yazilar-article:hover h4{
+    color: white !important;
+}
+.yazilar{
+    width: 100%;
+}
+
+.yazilar>small{
+    color: #4c4c4c;
+    font-size: 12px;
+}
+
+.sekil{
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;   
+    position: relative;
+}
+#article-images{
+    width: 100%;
+    height: 200px;
+    aspect-ratio: auto;
+}
+.articleHoverImages{
+    position: absolute;
+    bottom: 5%;
+    right: 5%;
+    opacity: 0;
+    color: white;
+    transition:all 0.50s linear;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.sekil i{
+    position: relative;
+    font-size: 20px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: white;
+    
+}
+.sekil i::before{
+    position: absolute;
+    transform: translate(50%,50%) !important;
+}
+.sekil:hover .articleHoverImages{
+    opacity: 1;
+    cursor: pointer;
+}
+.commentaring{
+    margin: 20px 0;
+}
+.commentaring>h3{
+    text-align: center;
+    
+}
+.mycomment{
+    padding: 20px 60px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #4c4c4c;
+}
+
+.article-title{
+    text-align: center;
+    margin-top: 20px;
+}
+.viewMyArticle{
+    width: 80%;
+    margin: 0 auto;
+    overflow: hidden;
+}
+.viewMyArticle>h1{
+    font-weight: bold;
+    margin: 30px auto
+}
+.viewMyArticle img{
+    float: right;
+}
+.form-group{
+    margin-top: 30px;
+}
+.form-group textarea{
+    margin: 15px 0;
+    min-width: 100%;
+    max-width: 100%;
+    min-height: 150px;
+}
+
+.form-group label{
+    font-size: 18px;
+    font-weight: 900;
+}
+
+.rating>.fas{
+    color: rgb(255, 247, 0);
+}
+
+.like-problem :nth-child(2){
+    display: none !important;
+}
+.viewMyArticle-image{
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    margin-bottom: 30px;
+}
+.viewMyArticle img{
+    max-width: 100%;
+}
+
+.meqaleler-container .filter{
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+}
+.filter>ul{
+    padding: 0 !important;
+}
+
+.meqaleler-container .dropdown-shopping{
+    position: relative;
+}
+.dropdownhide-shopping{
+    position: absolute;
+    right: 0;
+    top: 2em;
+    background-color: #dcdcdc;
+    padding: 1em;
+    opacity: 0;
+    transition: 0.4s;
+    visibility: hidden;
+    z-index: 99;
+    display: flex;
+    flex-direction: column;
+    width: max-content;
+    border-bottom: 2px solid #000000;
+    text-align: left;
+}
+
+.dropdownhide-shopping>li>a{
+    padding: 5px;
+    font-size: 15px;
+    font-weight: bolder;
+    color: #0d6efd;
+}
+.dropdown-shopping:hover{
+    cursor: pointer;
+}
+.shopping-views{
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+.filter-header{
+    padding: 5px 10px;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+.filter-header h5{
+    margin-bottom: 0 !important;
+}
+@media (max-width:500px){
+    .mycomment{
+        padding: 10px !important;
+    }
+}

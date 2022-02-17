@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{%  block css %}
+    <link rel="stylesheet" href="/static/userRegister.css">
+{% endblock css %}
+{% block body %}
+    <div class='form-container'>
+        {% if register %}
+        <div class="form-secim">
+            <a  href="/user/login">Giriş</a>
+            <a style="color: blue; border-bottom: 2px solid blue"  href="/user/register">Qeydiyyat</a>
+        </div>
+        {% if messages %}
+                                 <ul class="messages">
+                                    {% for message in messages %}
+                                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                                    {% endfor %}
+                                </ul>
+                            {% endif %}
+    <form class="form-user" method='post'>
+    {% csrf_token %}
+    {{ form.as_p }}
+
+        <button class="btn" id="userSubmitButton" type="submit">Qeydiyyat</button>
+
+        {% else %}
+            <div class="form-secim">
+            <a style="color: blue; border-bottom: 2px solid blue" href="/user/login">Giriş</a>
+            <a   href="/user/register">Qeydiyyat</a>
+        </div>
+    <form class="form-user" method='post'>
+    {% csrf_token %}
+    {{ form.as_p }}
+        {% if messages %}
+<ul style="color: red" class="messages">
+    {% for message in messages %}
+    <li style='color-red;font-size:20px'{% if message.tags %} {% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+        <button class="btn" id="userSubmitButton" type="submit">Daxil ol</button>
+    </form>
+        {% endif %}
+      </div>
+{% endblock %}

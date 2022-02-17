@@ -1,0 +1,100 @@
+.viewProduct{
+    width: 80%;
+    margin: 0 auto;
+}
+
+.products-addtocart{
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.one-product{
+    justify-content: space-between;
+    width: 46%;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+.product-image{
+    width: 46%;
+}
+.product-context{
+    width: 46%;
+}
+.form-addtocart{
+    margin: 5px 0;
+}
+.form-addtocart button{
+    margin-top: 5px;
+}
+.amount-total{
+    width: 80%;
+    padding: 20px ;
+    background-color: black;
+    margin: 15px auto;
+}
+.amount-total h3,h1{
+    color: white;
+}
+.addtocart-total{
+    display: flex;
+    justify-content: space-between;
+}
+.form-email-and-name{
+    display: flex;
+    margin: 20px 0;
+    justify-content: space-between;
+    width: 100%;
+}
+.form-email{
+    width: 45%;
+}
+
+.form-email>input{
+    width: 100%;
+    font-size: 20px;
+}
+.form-name{
+    width: 45%;
+}
+.form-name>input{
+    width: 100%;
+    font-size: 20px;
+}
+.mycomment>p{
+    margin: 10px 0 !important;
+}
+.form-group{
+    margin-top: 50px;
+}
+
+#stok-amount-h6{
+    padding: 10px 20px;
+    background-color:blue;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+}
+#product-detail-basic-img{
+    width: 100%;
+    height: 500px;
+    padding: 10px;
+    object-fit: contain;
+}
+
+.product-detail-other-img{
+    padding: 2px;
+    width: 100%;
+    height: 60px;
+    object-fit: contain;
+}
+
+@media (max-width:500px){
+    .rating>i{
+    font-size: 10px;
+}
+.mycomment{
+    padding: 10px;
+}
+}

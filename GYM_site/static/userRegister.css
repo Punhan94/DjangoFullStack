@@ -1,0 +1,133 @@
+.form-container {
+    background-color: #ffffff;
+    margin: 50px auto;
+    padding-bottom: 40px;
+    width: 60%;
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.2);
+    height: max-content;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+.form-secim{
+    margin-top: 40px;
+    height: max-content;
+    width: 80%;
+    display: flex;
+    justify-content: space-around;
+}
+.form-secim>a {
+    margin-bottom: 40px;
+    width: 50%;
+    text-align: center;
+    font-size: 26px;
+    text-decoration: none;
+    color: black;
+    border-bottom: 2px solid black;
+}
+.form-user{
+    width: 80%;
+    margin: 0 auto;
+}
+.form-user>p{
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 2em;
+}
+.form-user>p>label{
+    font-weight: bolder;
+    font-size: 18px;
+    color: black;
+    margin-bottom: 5px;
+}
+.form-user>p>input{
+    width: 100%;
+}
+.login_username, .login_password{
+    width: 75% !important;
+    margin-left: 2em;
+}
+
+
+
+.form-user>p>input::placeholder{
+    color: #8d8b8b;
+}
+
+input{
+    margin-top: 1px;
+    padding: 4px;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid black;
+}
+
+input:focus{
+    border-bottom: 3px solid black;
+}
+
+input:focus::placeholder{
+    color: transparent !important;
+}
+
+#userSubmitButton{
+
+    background-color: black;
+    color: white;
+}
+.warning{
+    font-size: 20px;
+    font-weight: bold;
+    color: red !important;
+}
+
+.user_change{
+    padding: 50px 0;
+}
+
+.user_change span{
+    display: none;
+}
+.user_change #id_password{
+    display: none;
+}
+.user_change>.form-user>p:nth-child(6){
+    display: none;
+}
+
+.form-user-password{
+    width: 80%;
+    margin: 0 auto;
+}
+.form-user-password>p{
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 2em;
+}
+.form-user-password>p>label{
+    font-weight: bolder;
+    font-size: 18px;
+    color: black;
+    margin-bottom: 5px;
+}
+.form-user-password>p>input{
+    width: 100%;
+}
+
+.form-user-password>p>input::placeholder{
+    color: #8d8b8b;
+}
+
+
+@media (max-width: 550px){
+    .form-container{
+        width: 90% !important;
+    }
+    .form-secim>a {
+        font-size: 20px !important;
+
+    }
+}
+
+

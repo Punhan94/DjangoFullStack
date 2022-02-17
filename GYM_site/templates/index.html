@@ -1,0 +1,91 @@
+{% extends "layout.html" %}
+
+{%  block css %}
+    <link rel='stylesheet' href="/static/index.css">
+{% endblock css %}
+
+{% block body %}
+{% include "includes/carousel.html" %}
+
+
+<div class='index-body'>
+<div class='index-body-inner' >
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div id="news-slider" class="owl-carousel">
+      
+      {% for product in allProducts %}
+      {% if product.status == 'True' and product.amount %}
+        <div class="post-slide">
+          <div class="post-img">
+            <img src="{{product.image.url}}" alt="">
+            <a href="/shoppings/product/{{product.id}}" class="over-layer"><i class="fa fa-link"></i></a>
+          </div>
+          <div class="post-content">
+            <h3 class="post-title">
+              <a href="/shoppings/{{product.id}}">{{product.title}}</a>
+            </h3>
+            <p class="post-description">{{product.detail | truncatewords:3 | safe}}</p>
+            <span class="post-date"><i class="fa fa-clock-o"></i>{{ product.created_date|date:"d M Y" }}</span>
+            <a class="read-more"  href="/shoppings/product/{{product.id}}">
+            Ətraflı
+            </a>
+          </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+
+
+
+  {% if random_article %}
+  <div class='random-article'>
+    <div class='random-article-img'>
+      <img src="{{random_article.article_images.url}}" alt="">
+    </div>
+    <div class='random-article-detail'>
+      <h2 class='random-article-title'>{{random_article.title}}</h2>
+      <div class='random-article-content'>{{random_article.content | safe | truncatewords:24 }}</div>
+      <a class="meqale-read-more"  href="/article/viewArticle/{{ random_article.id }}">
+            Oxu
+            </a>
+    </div>
+  </div>
+  {% endif %}
+
+
+</div>
+</div>
+
+<div class='gym-and-gym-center mb-5'>
+  <div class='gym-center-random'>
+      <div class='gym-center-random-image'>
+      {% if random_gym_images %}
+          <img src="{{random_gym_images.image.url}}" alt="">
+      {% endif %}
+      </div>
+      <div class='random-gymCenter'>
+          <h1>{{random_gymCenter.center_name}} </h1>
+          <p>{{random_gymCenter.detail | safe | truncatewords:30 }}</p>
+          <a id='gym-photos-hover'  href="/gymCenter/{{ random_gymCenter.id }}">
+                        Ətraflı məlumat
+                    </a>
+      </div>
+  </div>
+
+  <div class='gym-random-training'>
+      <div class='gym-training'>
+        <img src=''></img>
+      </div>
+      <div>
+
+      </div>
+  </div>
+</div>
+</div>
+
+{% endblock  %}

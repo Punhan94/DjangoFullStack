@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+{%  block css %}
+<link rel="stylesheet" href="/static/allarticle.css">
+{% endblock css %}
+{% block body %}
+
+<div class='meqaleler-container'>
+<div class='article-header'>
+    <h1 class="basliq">Bəyəndiyiniz məqalələr</h1>
+    {% comment %} <form method="get"  >
+        <input type="text" name="keyword" class="put-sm">
+        <button id='search-button-articles' type="submit" >
+        <i class='fas fa-search'>
+        </i></button>
+    </form> {% endcomment %}
+</div>
+    {% if likeArticles  %}
+    <div  class="meqaleler d-flex flex-wrap">
+        {% for like in likeArticles %}
+            <div class="meqale" >
+                <div class="sekil">
+                    <img id='article-images' src="{{ like.article.article_images.url }}" alt="">
+                    <div class='articleHoverImages'>
+                        <a href='/article/unlikeArticle/{{like.article.id}}' ><i class="fas fa-heart"></i></a>
+                    </div>
+                </div>
+                <div class="yazilar yazilar-article d-flex flex-wrap align-items-center">
+                    <h4 >{{ like.article.title }}</h4>
+                    {% if like.article.rated %}
+                    <div stye='width:100%' class="rating mt-1 mb-1">
+                        <i class="rating__star {% if like.article.rated >= 1 %}  fas {% else %} far {% endif %}fa-star"></i>
+                        <i class="rating__star {% if like.article.rated >= 2 %}  fas {% else %} far {% endif %}fa-star"></i>
+                        <i class="rating__star {% if like.article.rated >= 3 %}  fas {% else %} far {% endif %}fa-star"></i>
+                        <i class="rating__star {% if like.article.rated >= 4 %}  fas {% else %} far {% endif %}fa-star"></i>
+                        <i class="rating__star {% if like.article.rated >= 5 %}  fas {% else %} far {% endif %}fa-star"></i>
+                    </div>
+                    {% endif %}
+                    <div style='width:100%' class='d-flex justify-content-between'>
+                        <span>Bəyənilmə:{{like.article.articles_likes}}</span>
+                        <span>Baxış sayı:{{like.article.article_views}}</span>
+                    </div>
+                    <div><small>{{ like.article.created_date|date:"d M Y" }}</small>,
+                    <small>{{ like.article.author.first_name }}</small>
+                    <a style='font-weight:bolder' class="btn btn-link"  href="/article/viewArticle/{{ like.article.id }}">
+                        Məqaləni oxu 
+                    </a></div>
+                </div>
+            </div>
+        {% endfor %}
+</div>
+    {% else %}
+        <h1 style="color: red; text-align: center">Bəyəndiyiniz məqalə yoxdur</h1>
+    {% endif %}
+        </div>
+{% endblock %}

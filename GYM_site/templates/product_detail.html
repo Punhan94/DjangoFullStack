@@ -1,0 +1,141 @@
+{% extends "layout.html" %}
+
+
+{%  block css %}
+<link rel="stylesheet" href="/static/allarticle.css">
+<link rel="stylesheet" href="/static/product_detail.css">
+<link rel="stylesheet" href="/static/shopping.css">
+<link rel="stylesheet" href="/static/gymall.css">
+{% endblock css %}
+
+
+{% block body %}
+<div class='viewProduct'>
+<h1 class='shopping-h1'>{{product.title}}</h1>
+<ul class='shopping-ul'>
+      <li style='margin-left:10px'>
+         <a href="/shoppings/">Mağaza</a>
+      </li>
+</ul>
+<section class="py-5" style='padding:0 !important'>
+    <div style='margin:20px 0 !important' class="container px-4 px-lg-5 my-5">
+        <div class="row gx-4 gx-lg-5 justify-content-between">
+            <div class="col-md-6">
+    <div class="gym-inner-container">
+
+
+  {% for i in images %}
+  <div class="mySlides">
+
+    <div  class="numbertext">
+    {{ forloop.counter }} / {{images|length}}</div>
+      <img id='product-detail-basic-img' src="{{i.image.url}}" >
+  </div>
+{% endfor %}
+
+
+  <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+  <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+
+  <div class="row mt-2">
+{% for i in images %}
+
+    <div class="column">
+      <img class="demo cursor product-detail-other-img" src="{{i.image.url}}"  
+      onclick="currentSlide({{ forloop.counter }})" alt="The Woods">
+    </div>
+{% endfor %}
+  </div>
+</div>
+</div>
+    <div class="col-md-6">
+        <h3 style='color:black; margin-bottom:0.2em' class="display-5 fw-bolder">
+        {{product.title}}
+        </h3>
+        <div class="fs-5 mb-2">
+        <h4 style='font-weight:bold'>{{product.price}} AZN</h4>
+        </div>
+
+        <p class="lead">{{product.detail | truncatewords:74 | safe}}</p>
+        
+        
+        <div class="d-flex">
+            <form method='POST' action='/order/addtocart/{{product.id}}/' >
+            {% csrf_token %}
+            <h6 id='stok-amount-h6'>Stokda olan : {{product.amount}}</h6>
+            <input class="form-control text-center me-3" id="inputQuantity" 
+            name='quantity' type="number" min='1' value="1" max={{product.amount}} 
+            style="max-width: 4rem; border:2px solid gray" />
+            
+            <button style='margin:5px 0' class="btn btn-outline-dark flex-shrink-0" 
+            type="submit">
+                Səbətə əlavə et
+            </button>
+            </form>
+            {% if messages %}
+            <ul class="messages">
+            {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+        </div>
+    </div>
+    </div>
+</section>
+<div class='commentaring'>
+    <h3>Şərhlər</h3>
+    {% if ProductComments %}
+        {% for comment in ProductComments %}
+            <div class="mycomment">
+            <div class='d-flex justify-content-between'>
+                <h5 style=" font-weight: bold">{{ comment.comment_author }}</h5>
+                <div style='float:right' class="rating">
+                    <i class="rating__star {% if comment.rate >= 1 %}  fas {% else %} far {% endif %}fa-star"></i>
+                    <i class="rating__star {% if comment.rate >= 2 %}  fas {% else %} far {% endif %}fa-star"></i>
+                    <i class="rating__star {% if comment.rate >= 3 %}  fas {% else %} far {% endif %}fa-star"></i>
+                    <i class="rating__star {% if comment.rate >= 4 %}  fas {% else %} far {% endif %}fa-star"></i>
+                    <i class="rating__star {% if comment.rate >= 5 %}  fas {% else %} far {% endif %}fa-star"></i>
+                </div>
+            </div>
+                <small>{{comment.created_date}}</small>
+                <p>{{ comment.comment }}</p>
+            </div>
+        {% endfor %}
+    {% endif %}
+<div class="form-group">
+    <form method="post" action="/shoppings/add/{{ product.id }}/">
+    {% csrf_token %}
+    
+    <div style='float:right'>
+    <label  for='rating'>Reytinq</label>
+    <select  name="rating" id="rating">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+    </select>
+    </div>
+    <label for="exampleFormControlTextarea1">
+     
+    </label><br>
+    <textarea name="content" class="form-control" id="exampleFormControlTextarea1" 
+    rows="3"></textarea>
+    <div class='form-email-and-name'>
+        <div class='form-email'>
+            <label for='email'>Emailiniz</label> 
+            <input name="email" type='text'>
+        </div >
+        <div class='form-name'>
+            <label for="name">Adınız</label>
+            <input name="name" type='text'>
+        </div>
+    </div>
+     <button type="submit" class="btn btn-primary">Təsdiqlə</button>
+</form>  </div>
+</div>
+</div>
+{% endblock %}

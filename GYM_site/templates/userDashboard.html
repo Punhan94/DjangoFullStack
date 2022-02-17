@@ -1,0 +1,130 @@
+{% extends "layout.html" %}
+
+
+{%  block css %}
+    <link rel="stylesheet" href="/static/userDashboard.css">
+{% endblock css %}
+
+
+{% block body %}
+
+    <div class="user-dashboard-header">
+    <div class="user-dashboard-article-create">
+    <div class='d-flex align-items-center justify-content-between'>
+      <h4 style='margin-right:8px'> Xoş gəldiniz 
+       {{ request.user.first_name }}</h4>
+      {% if messages %}
+            <ul class="messages">
+            {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+            </ul>
+  {% endif %}
+      <a  class="btn-create-article" href="/article/create">Məqalə yazın +</a>
+
+    </div>
+
+
+      
+    <div class='user-dahsboard-user-details'>
+    <ul id='filter'>
+         <li style='z-index:99999999999999999999999999' class="dropdown-shopping">
+                    <div class='filter-header'>
+                  <i class="fas fa-cog"></i>
+                    </div>
+                    <ul id='dropdownhide-shopping' class="dropdownhide-shopping">
+                        <li>
+                           <a href="/user/changeUser">Məlumatları dəyiş</a>                        
+                        </li>
+                        <li>
+                           <a href="/user/changePassword">Şifrəni dəyiş</a>                        
+                        </li>
+                    </ul>
+                </li>
+</ul>
+    
+      <div class='d-flex flex-wrap user-dahsboard-user-detail'>
+        <h5>İstifadəçi adı : {{request.user.username}}</h5>
+        <h5>Adı : {{request.user.first_name}}</h5>
+      </div>
+      <div class='d-flex flex-wrap user-dahsboard-user-detail'>
+      <h5>Soyadı : {{request.user.last_name}}</h5>
+        <h5>Email : {{request.user.email}}</h5>
+      </div>
+      <div class='d-flex flex-wrap user-dahsboard-user-detail'>
+        <h5>Qeydiyyat tarixi : {{request.user.date_joined}}</h5>
+        <h5>Son giriş : {{request.user.last_login}}</h5>
+      </div>
+    </div>
+
+              {% if orderedProducts %}
+      <div style='width:100% !important' class="user-table">
+<table class="table">
+  <thead>
+    <tr>
+      <th style='width:60%' scope="col">Mal</th>
+      <th scope="col">Status</th>
+      <th scope="col">Sifariş vaxtı</th>
+    </tr>
+  </thead>
+  <tbody>
+  <h1 id='form-userArticles-h1'>Sifarişləriniz</h1>
+  {% for i in orderedProducts %}
+
+    <tr class='pt-4 pb-4'>
+      <td>{{i.product.title}}</td>
+      <td>{{i.status}}</td>
+      <td> {{i.create_at}}</td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+</div> 
+      {% endif %}
+
+    </div>
+    </div>
+
+{% if form %}
+<h1 id='form-userArticles-h1'>Məqalələriniz</h1>
+<div class="user-table">
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Başlıq</th>
+
+      <th scope="col">Dəyiş</th>
+      <th scope="col">Sil</th>
+    </tr>
+  </thead>
+  <tbody>
+
+  {% for article in form %}
+    <tr class='pt-4 pb-4'>
+      <td>
+        <a style='font-weight:bolder' href="/article/viewArticle/{{ article.id }}">
+            {{ article.title }} 
+        </a>
+      </td>
+
+      <td>
+      <a style="color: white" href="/article/editArticle/{{ article.id }}">
+          <i class="fas fa-edit">
+            Dəyişdir
+          </i>
+          </a>
+      </td>
+      <td>
+      <a style="color: white" href="/article/deleteArticle/{{ article.id }}">
+          <i  class="fas fa-trash-alt">
+              Sil
+          </i></a>
+      </td>
+    </tr>
+  {% endfor %}
+
+
+  </tbody>
+</table>
+</div>  {% endif %}
+{% endblock %}

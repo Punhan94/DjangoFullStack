@@ -1,0 +1,91 @@
+
+{% extends "layout.html" %}
+{% load static %}
+
+{%  block css %}
+<link rel="stylesheet" href="/static/sports.css">
+{% endblock css %}
+
+
+{% block body %}
+<div class='sport'>
+<div class='gender-section'>
+    <div>
+        <input type="radio" id="male" name="drone" value="male" checked>
+        <label for="huey">Kişi</label>
+    </div>
+
+    <div>
+        <input type="radio" id="female" name="drone" value="female">
+        <label for="dewey">Qadın</label>
+    </div>
+</div>
+
+<div  class='sports-body'>
+<img id='sports-body-img' src="{% static '../media/sports-bg.png' %}"   alt="">
+<a class='legs-a' href="/sports/legs">
+<img id='legs-front' class='human legs' src=" {% static '../media/legs-front.png' %} " alt="">
+<img id='legs-back' class='human legs' src=" {% static '../media/legs-back.png' %} " alt="">
+</a>
+<a class='shoulder-a' href="/sports/shoulder">
+<img id='shoulder-front-1' class='human shoulder' src=" {% static '../media/shoulder-front-1.png' %} " alt="">
+<img id='shoulder-front-2' class=' human shoulder' src=" {% static '../media/shoulder-front-2.png' %} " alt="">
+<img id='shoulder-back-1' class='human shoulder' src=" {% static '../media/shoulder-back-1.png' %} " alt="">
+<img id='shoulder-back-2' class='human shoulder' src=" {% static '../media/shoulder-back-2.png' %} " alt="">
+</a>
+<a class='arm-a' href="/sports/arm">
+<img id='arm-front-1' class='human arm' src=" {% static '../media/arm-front-1.png' %} " alt="">
+<img id='arm-front-2' class=' human arm' src=" {% static '../media/arm-front-2.png' %} " alt="">
+<img id='arm-back-1' class='human arm' src=" {% static '../media/arm-back-1.png' %} " alt="">
+<img id='arm-back-2' class='human arm' src=" {% static '../media/arm-back-2.png' %} " alt="">
+</a>
+<a class='chest-a' href="/sports/chest">
+<img id='chest' class='human chest' src=" {% static '../media/chest.png' %} " alt="">
+</a>
+<a class='human-back-a' href="/sports/human-back">
+<img id='human-back' class='human human-back' src=" {% static '../media/human-back.png' %} " alt="">
+</a>
+<a class='neck-a' href="/sports/neck">
+<img id='neck-front' class='human neck' src=" {% static '../media/neck-front.png' %} " alt="">
+<img id='neck-back' class='human neck' src=" {% static '../media/neck-back.png' %} " alt="">
+</a>
+<a class='abdomen-a' href="/sports/abdomen">
+<img id='abdomen' class='human abdomen' src=" {% static '../media/abdomen.png' %} " alt="">
+</a>
+</div>
+
+<div  class='sports-body sport-hidden'>
+<img id='sports-body-img' src="{% static '../media/Female-Figures.png' %}"   alt="">
+<a class='legs-a' href="/sports/legs">
+<img id='female-legs-front' class='human legs' src=" {% static '../media/Female-legs-front.png' %} " alt="">
+<img id='female-legs-back' class='human legs' src=" {% static '../media/Female-legs-back.png' %} " alt="">
+</a>
+<a class='shoulder-a' href="/sports/shoulder">
+<img id='female-shoulder-front-1' class='human shoulder' src=" {% static '../media/Female-shoulder-front-1.png' %} " alt="">
+<img id='female-shoulder-front-2' class=' human shoulder' src=" {% static '../media/Female-shoulder-front-2.png' %} " alt="">
+<img id='female-shoulder-back-1' class='human shoulder' src=" {% static '../media/Female-shoulder-back-1.png' %} " alt="">
+<img id='female-shoulder-back-2' class='human shoulder' src=" {% static '../media/Female-shoulder-back-2.png' %} " alt="">
+</a>
+<a class='arm-a' href="/sports/arm">
+<img id='female-arm-front-1' class='human arm' src=" {% static '../media/Female-arm-front-1.png' %} " alt="">
+<img id='female-arm-front-2' class=' human arm' src=" {% static '../media/Female-arm-front-2.png' %} " alt="">
+<img id='female-arm-back-1' class='human arm' src=" {% static '../media/Female-arm-back-1.png' %} " alt="">
+<img id='female-arm-back-2' class='human arm' src=" {% static '../media/Female-arm-back-2.png' %} " alt="">
+</a>
+<a class='chest-a' href="/sports/chest">
+<img id='female-chest' class='human chest' src=" {% static '../media/Female-chest.png' %} " alt="">
+</a>
+<a class='human-back-a' href="/sports/human-back">
+<img id='female-human-back' class='human human-back' src=" {% static '../media/Female-human-back.png' %} " alt="">
+</a>
+<a class='neck-a' href="/sports/neck">
+<img id='female-neck-front' class='human neck' src=" {% static '../media/Female-neck-front.png' %} " alt="">
+<img id='female-neck-back' class='human neck' src=" {% static '../media/Female-neck-back.png' %} " alt="">
+</a>
+<a class='abdomen-a' href="/sports/abdomen">
+<img id='female-abdomen' class='human abdomen' src=" {% static '../media/Female-abdomen.png' %} " alt="">
+</a>
+</div>
+</div>
+
+{% endblock %}

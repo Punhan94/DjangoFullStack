@@ -1,0 +1,185 @@
+{% extends "layout.html" %}
+
+
+{%  block css %}
+    <link rel="stylesheet" href="/static/shopping.css">
+{% endblock css %}
+
+
+{% block body %}
+
+{% if with_categories %}
+<div class='shopping-header'>
+<h1 class='shopping-h1'>{{with_categories.title}}</h1>
+
+<ul class='shopping-ul'>
+      <li style='margin-left:10px'>
+         <a href="/shoppings/">Bütün mallar</a>
+      </li>
+      {% if parent_category %}
+      {% for parent in parent_category %}
+      <a href="/shoppings/{{parent.slug}}">{{parent.title}}</a>
+      {% endfor %}
+      {% else %}
+      <li style='margin-left:10px; color:white'>
+         {%  if  with_categories.parent %}
+            <a href='/shoppings/{{with_categories.parent.slug}}'>{{with_categories.parent.title}}</a>
+         {% else %}
+            <a href=''>{{with_categories.title}}</a>
+         {% endif %}
+      </li>
+      {% endif %} 
+</ul>
+</div>
+
+<div class='filter'>
+
+   <ul id='category' class='category'>
+         <li style='z-index:99999999999999999999999999' class="dropdown-shopping">
+                    Kateqoriya
+                    <i class="fas fa-chevron-down"></i>
+<ul id='dropdownhide-category' class="dropdownhide-category">
+   <li>
+         <a href="/shoppings/">Bütün mallar</a>
+      </li>
+      {% if parent_category %}
+      {% for parent in parent_category %}
+      <li>
+         <a href="/shoppings/{{parent.slug}}">{{parent.title}}</a>
+      </li>
+      {% endfor %}
+      {% else %}
+      <li >
+         <a>{{with_categories.title}}</a>
+      </li>
+      {% endif %} 
+</ul>
+</li>
+</ul>
+
+
+   <ul id='filter'>
+         <li style='z-index:99999999999999999999999999' class="dropdown-shopping">
+                    <div class='filter-header'>
+                  <h5>Filtrlə<i class="fas fa-chevron-down"></i></h5>
+                    </div>
+                    <ul id='dropdownhide-shopping' class="dropdownhide-shopping">
+                        <li>
+                           <a href="?filter=price">Qiymətə görə(Artan)</a>                        
+                        </li>
+                        <li>
+                           <a href="?filter=-price">Qiymətə görə(Azalan)</a>                        
+                        </li>
+                        <li>
+                           <a href="?filter=created_date">İlk yüklənən</a>                        
+                        </li>
+                        <li>
+                           <a href="?filter=-created_date">Yeni yüklənən</a>                        
+                        </li>
+                        <li>
+                           <a href="?filter=-sold">Ən çox satılan</a>                        
+                        </li>
+                        <li>
+                           <a href="?filter=sold">Ən az satılan</a>                        
+                        </li>
+                    </ul>
+                </li>
+</ul>
+
+</div>
+{% else %}
+<div class='shopping-header'>
+<h1 class='shopping-h1'>Bütün mallar</h1>
+<ul class='shopping-ul'>
+   {% for category in categories %}
+   {% if category.status == 'True' %}
+      <li>
+         <a  href="/shoppings/{{category.slug}}">{{category.title}}</a>
+      </li>
+      {% endif %}
+   {% endfor %}
+</ul>
+</div>
+
+
+
+
+<div  class='filter'>
+
+   <ul id='category' class='category'>
+         <li style='z-index:99999999999999999999999999' class="dropdown-shopping">
+                    Kateqoriya
+                    <i class="fas fa-chevron-down"></i>
+<ul id='dropdownhide-category' class="dropdownhide-category">
+   {% for category in categories %}
+   {% if category.status == 'True' %}
+      <li style='margin-left:10px'>
+         <a  href="/shoppings/{{category.slug}}">{{category.title}}</a>
+      </li>
+      {% endif %}
+   {% endfor %}
+</ul>
+</li>
+</ul>
+
+
+   <ul id='filter'>
+         <li style='z-index:99999999999999999999999999' class="dropdown-shopping">
+                  <div class='filter-header'>
+                  <h5>Filtrlə<i class="fas fa-chevron-down"></i></h5>
+                    </div>
+                    
+                    <ul id='dropdownhide-shopping' class="dropdownhide-shopping">
+                        <li>
+                           <a href="?filter=price">Qiymətə görə(Artan)</a>                        
+                        </li>
+                        <li>
+                           <a href="?filter=-price">Qiymətə görə(Azalan)</a>                        
+                        </li>
+                        <li>
+                           <a href="?filter=created_date">İlk yüklənən</a>                        
+                        </li>
+                        <li>
+                           <a href="?filter=-created_date">Yeni yüklənən</a>                        
+                        </li>
+                        <li>
+                           <a href="?filter=-sold">Ən çox satılan</a>                        
+                        </li>
+                        <li>
+                           <a href="?filter=sold">Ən az satılan</a>                        
+                        </li>
+                    </ul>
+                </li>
+</ul>
+</div>
+{% endif %}
+</div>
+
+
+<div class="d-flex mb-5 flex-wrap justify-content-evenly all-products">
+   {% include "includes/product.html" %}
+</div>
+<nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-center">
+    <li class="page-item {% if pagesProduct.has_previous %} {% else %} disabled {% endif %} ">
+      <a class="page-link" href="?page=1" tabindex="-1" aria-disabled="true">İlk</a>
+    </li>
+    {% if pagesProduct.has_previous %}
+    <li class="page-item ">
+      <a class="page-link" href="?page={{pagesProduct.previous_page_number}}" tabindex="-1" aria-disabled="true">Əvvəlki</a>
+    </li>
+    {% endif %}
+      <li class="page-item disabled"><a class="page-link " href="">
+         Olduğunuz {{pagesProduct.number}}/{{pagesProduct.paginator.num_pages}}
+      </a></li>
+      {% if pagesProduct.has_next %}
+    <li class="page-item">
+      <a class="page-link" href="?page={{pagesProduct.next_page_number}}">Növbəti</a>
+    </li>
+    <li class="page-item">
+      <a class="page-link" href="?page={{pagesProduct.paginator.num_pages}}">Sonuncu</a>
+    </li>
+    {% endif %}
+  </ul>
+</nav>
+{% endblock %}

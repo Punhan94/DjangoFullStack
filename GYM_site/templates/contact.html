@@ -1,0 +1,103 @@
+{% extends "layout.html" %}
+
+{%  block css %}
+    <link rel="stylesheet" href="/static/contact.css">
+    <link rel="stylesheet" href="/static/gymall.css">
+{% endblock css %}
+
+{% block body %}
+
+
+<div>
+
+            <div class="containerContact">
+      <div class="containerContact-left">
+      {% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} style='font-size:20px;color:blue;font-weight:bolder' class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+      <form method='POST' action="/contact/elave/">
+      {% csrf_token %}
+        <div class="contain">
+        <div class="containerContact-small">
+          <label >Adınız</label>
+          <input name='contact_first_name' placeholder="Ad" class="small-input" 
+          type="text"><br/>
+        </div>
+        <div class="containerContact-small">
+          <label >Soyadınız</label><br/>
+          <input name='contact_last_name' placeholder="Soyad" class="small-input"
+           type="text">
+        </div>
+        </div>
+        <div>
+          <label  >Email</label><br/>
+          <input name='contact_email' placeholder="Email" class="big-input" type="text"/>
+        </div>
+        <div>
+          <label  >Mövzu</label><br/>
+          <input name='contact_subject' placeholder="Mövzu" class="big-input" type="text"/>
+        </div>
+        <div>
+          <label >Mesaj</label><br/>
+          <textarea name='contact_detail' id="textareas" cols="30" rows="10"
+           placeholder="Öz notunuzu qeyd edin"> </textarea>
+        </div>
+        <button type='submit' id="btn7">GÖNDƏR</button>
+      </div>
+      </form>
+
+
+      <div class="containerContact-right">      
+      
+      {% if ours_contact %}
+      <div class="containerContact-right-top">
+      {% for i in ours_contact %}
+        <p class="bold-p" >Ünvan</p>
+        <div class='d-flex'>
+         <div class='icon-contact'>
+            <i class="fas fa-map-marker-alt"></i>
+        </div>  
+        <div class='detail-contact'>
+            <p>{{ i.ours_location }}</p>
+        </div>
+         </div>
+
+         <p class="bold-p" >Telefon</p>
+        <div class='d-flex'>
+         <div class='icon-contact'>
+            <i class='fa fa-phone'></i>
+        </div>  
+        <div class='detail-contact'>
+            <p>{{ i.ours_mobil_telephone }}</p>
+        </div>
+         </div>
+
+         <p class="bold-p" >Email ünvanı</p>
+         <div class='d-flex'>
+         <div class='icon-contact'>
+            <i class='fa fa-envelope'></i>
+        </div>  
+        <div class='detail-contact'>
+            <p>{{ i.ours_email }}</p>
+        </div>
+         </div>
+              {% endfor %}
+
+      </div>
+      {% endif %}
+      <div class="containerContact-right-bottom">
+        <div class='gymcenter-for-map-contact'>
+          {% csrf_token %}
+              {{m|safe}}
+          </div>
+      </div>
+    </div>
+    </div>
+        </div>
+
+
+{% endblock %}

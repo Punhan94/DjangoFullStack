@@ -1,0 +1,188 @@
+{% load static %}
+<div id="navbar">
+      <div class="logo">
+          <a href="/">
+                <img style='width:50px; height:50px' src="{% static '../media/Logo.png' %} " alt="sekil">
+          </a>
+      </div>
+
+            <ul id='kecidler' class="kecidler" >
+                <li>
+                    <a class='kecidler-a' href="/article/allarticle/">Blog</a>
+                </li>
+                <li class="dropdown">
+                    <a class='kecidler-a' href="/shoppings/">Mağaza</a>
+                    <i class="fas fa-chevron-down"></i>
+                    <ul class="dropdownhide">
+                        {% for category in categories %}
+                        <li>
+                            <a class='kecidler-a' href="/shoppings/{{category.slug}}">{{category.title}}</a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </li>
+                <li>
+                    <a  class='kecidler-a' href="/sports">İdman</a>
+                </li>
+                <li>
+                    <a class='kecidler-a' href="/gymCenter">İdman zalları</a>
+                </li>
+                <li>
+                    <a class='kecidler-a' href="/idealceki">İdeal çəki</a>
+                </li>
+                <li>
+                    <a class='kecidler-a' href="/contact">Əlaqə</a>
+                </li>
+            </ul>
+
+        <ul class="icons">
+            <li class='search' >
+                     <i id='search' class="fas fa-search"></i>
+            </li>
+
+        {% if likeArticles %}
+            <li class="dropdown1" href="/article/likeArticles">
+                <a class='a-href-for-icon' href="/article/likeArticles">
+                    <i class="fas fa-heart"></i>
+                </a>
+            <small class='cartlength'>{{likeArticles|length}}</small>
+            <ul class="dropdownhide1">
+                        {% for lA in likeArticlenavbar %}
+                        <li >
+                        <a class='d-flex ' href="/article/viewArticle/{{ lA.article.id }}">
+                            <img  id='articleimages' src="{{lA.article.article_images.url}}" alt="">
+                            <p id='articlesHoverTitle' style='color:black'>{{lA.article.title}}</p>
+                            <a style='top:0;right:0; font-size:10px' href='/article/unlikeArticle/{{lA.article.id}}' ><i id='articleHoverLike' style='color: blue !important' class="fas fa-heart"></i></a>
+                        </a>
+                        </li>
+                        {% endfor %}
+                        {% if  likeArticles|length  >  likeArticlenavbar|length  %}
+                        <li>
+                            <a style='font-size:14px' href="/article/likeArticles">Hamısına bax</a>
+                        </li>
+                        {% endif %}
+                    </ul>
+            </li>
+                {% else %}
+                <li class="dropdown1" href="">
+                <i class="far fa-heart"></i>
+                </li>
+                    {% endif %}
+
+
+                {% if carts %}
+                <li class="dropdown1" href="/order">
+                <a class='a-href-for-icon' href="/order">
+                    <i class="fas fa-shopping-cart"></i>
+                </a>
+                
+            <small class='cartlength'>{{carts|length}}</small>
+            
+            <ul class="dropdownhide1">
+                {% if shopCartsNavbar %}
+                        {% for cart in shopCartsNavbar %}
+                        <li style="margin-bottom:4px">
+                        <a class='d-flex' href="/shoppings/product/{{cart.product.id}}">
+                            <img  id='cartimages' src="{{cart.product.image.url}}" alt="">
+                            <div>
+                            <p id='articlesHoverTitle' style='color:black; margin-bottom:2px !important'>{{cart.product.title}}</p>
+                            <small style='color:black;font-size:10px'>{{cart.amount}} AZN</small>
+                            </div>
+                            <a style="position:relative;margin-left:1px" href="/order/deleteCart/{{ cart.product.id }}">
+                            <i style='position:absolute;top:0; font-size:12px;color :black !important' class="fas fa-times"></i></a>
+                        </a>
+                        </li>
+                        {% endfor %}
+                {% endif %}
+                        {% if carts|length > 2 %}
+                        <li>
+                            <a style='font-size:14px' href="/order">Hamısına bax</a>
+                        </li>
+                        {% endif %}
+                    </ul></li>
+                    {% else %}
+                    <li class="dropdown1" href="">
+                    <i class="fas fa-shopping-cart"></i>
+                    </li>
+                    {% endif %}
+            <li class=' navbar-user'>
+            {% if request.user.is_authenticated %}
+                <a  href="/article/userDashboard">
+                <i >
+                    {{ request.user.first_name }}
+                </i>
+            </a>
+                <a class='ml-1' href="/user/logout">
+                    <i class="fas fa-sign-out-alt"></i>
+                </a>
+            {% else %}
+            <a href="/user/login">
+                <i   class="m-lg-1 far fa-user"></i>
+            </a>
+            {% endif %}
+            </li>
+            <i  id='hamburger' class="fas fa-bars "></i>
+        </li>
+
+        {% comment %} 
+            Burger menyu 
+         {% endcomment %}
+
+        <ul id='mobile-menu' class="mobile-menu ">
+            
+            {% if request.user.is_authenticated %}
+            <li  class='user-name-mobile'>
+                <a href="/article/userDashboard">
+                            <i >
+                            {{ request.user.first_name }}
+                            </i>
+                            </a>
+            </li>
+            {% endif %}
+
+                  <li><a href="/article/allarticle/">Blog</a></li>
+                  <li id='dropdown-mobile' class="dropdown-mobile">
+                    <a href="/shoppings/">Mağaza</a>
+                    <i class="fas fa-chevron-down"></i>
+                    <ul id='dropdownhide-mobile' class="dropdownhide-mobile">
+                        {% for category in categories %}
+                        <li>
+                            <a href="/shoppings/{{category.slug}}">{{category.title}}</a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </li>
+                  <li>
+                        <a href="/sports" >İdman</a>
+                  </li>
+                  <li>
+                        <a href="/gymCenter" class="active">İdman zalları</a>
+                    </li>
+                   <li>
+                        <a href="/idealceki">İdeal çəki</a>
+                   </li>
+                    <li>
+                    <a class='kecidler-a' href="/contact">Əlaqə</a>
+                    </li>
+
+                   <li class='user-mobile-menu'>
+                            {% if request.user.is_authenticated %}
+                            
+                            <a href="/user/logout">Çıxış
+                            <i class="fas fa-sign-out-alt"></i>
+                            </a>
+                            {% else %}
+                            <a href="/user/login">
+                            <i class="far fa-user"></i>
+                            </a>
+                            {% endif %}
+                    </li>
+            </ul>
+    </div>
+<div class='hide-search' id="hide-search">
+    <form action="/search/" method='Get'>
+                            {% csrf_token %}
+                            <input placeholder='Axtarış' id='query' class='input search-input' name='searched' type="text">
+                            <button style='display:none' type="submit" class="btn btn-primary"><i  class="fas fa-search"></i></button>
+    </form>
+</div>

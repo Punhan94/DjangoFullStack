@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{%  block css %}
+<link rel="stylesheet" href="/static/sports.css">
+{% endblock css %}
+
+
+{% block body %}
+
+<div  class='sports_detail-body'>
+{% if sportVideo %}
+{% for video in sportVideo %}
+<div class='sport_video'>
+{% if video.title %}
+<h1>{{video.title}}</h1>
+{% endif %}
+<div class='sport-video-control'>
+<video width="100%" height="auto" controls>
+  <source src="{{video.video.url}}" type="video/mp4">
+</video>
+</div>
+
+</div>
+
+{% endfor %}
+{% endif %}
+</div>
+
+{% endblock %}

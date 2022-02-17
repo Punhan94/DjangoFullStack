@@ -1,0 +1,75 @@
+{% extends "layout.html" %}
+{%  block css %}
+<link rel="stylesheet" href="/static/allarticle.css">
+{% endblock css %}
+{% block body %}
+
+<div class='viewMyArticle'>
+    <h1 class='article-title'>{{ form.title }}</h1>
+    <img class='viewMyArticle-image' src="{{form.article_images.url}}" alt="">
+    <div class='' >
+    <small style='font-weight:bolder'>{{ form.created_date }}</small>
+    {% if itsArticleLike %}
+                    <a style='float:right' href='/article/unlikeArticle/{{form.id}}' >
+                    <i style='font-size:25px' class="fas fa-heart"></i></a>
+                    {% else %}
+                    <a style='float:right' href='/article/likeArticle/{{form.id}}' >
+                    <i style='font-size:25px' class="far fa-heart"></i></a>
+                    {% endif %}
+      
+      </div>
+      
+      <p>{{ form.content | safe }}</p>
+      
+
+<div class='commentaring'>
+    <h3>Şərhlər</h3>
+    {% if comments %}
+        {% for comment in comments %}
+            <div class="mycomment">
+                <h5 style="font-weight: bold">{{ comment.comment_author }}</h5>
+                <a style='float:right' href="/article/editcomment/{{comment.id}}">
+                <i class="fas fa-edit"></i></a>
+                <div class="rating">
+                <i class="rating__star {% if comment.rate >= 1 %}  fas {% else %} far {% endif %}fa-star"></i>
+                    <i class="rating__star {% if comment.rate >= 2 %}  fas {% else %} far {% endif %}fa-star"></i>
+                    <i class="rating__star {% if comment.rate >= 3 %}  fas {% else %} far {% endif %}fa-star"></i>
+                    <i class="rating__star {% if comment.rate >= 4 %}  fas {% else %} far {% endif %}fa-star"></i>
+                    <i class="rating__star {% if comment.rate >= 5 %}  fas {% else %} far {% endif %}fa-star"></i>
+                </div>
+                <p>{{ comment.comment }}</p>
+                <small>{{comment.comment_created_date}}</small>
+                
+                </div>
+            
+        {% endfor %}
+    {% endif %}
+     <div class="form-group">
+     {% if instance %}
+    <form method="post"  action="/article/editcomment/{{instance.id}}/">
+    {% else %} 
+    <form method="post"  action="/article/comment/{{ form.id }}/">
+     {%endif%}
+    {% csrf_token %}
+
+    <label for="exampleFormControlTextarea1">Şərh yazın </label>
+    <div style='float:right'>
+    <label  for='rating'>Reytinq</label>
+    <select  name="rating" id="rating"  {%  if instance%} value='{{instance.rate}}' {%endif%}>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+    </select>
+    </div>
+     
+    <textarea name="c_content" class="form-control" id="exampleFormControlTextarea1" rows="3">{%  if instance %}{{instance.comment}}{%endif%}
+    </textarea>
+
+     <button type="submit" class="btn btn-primary">Təsdiqlə</button>
+</form>  </div>
+</div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,151 @@
+{% extends 'layout.html' %}
+
+{%  block css %}
+<link rel="stylesheet" href="/static/gymall.css">
+
+{% endblock css %}
+
+{% block body %}
+<div class='gym-container'>
+<h1 class='text-center mt-4 mb-4'>{{gym.center_name}}</h1>
+
+<div class="gym-inner-container">
+
+  {% for image in gym_images %}
+  <div class="mySlides">
+
+    <div class="numbertext">{{ forloop.counter }} / {{gym_images|length}}</div>
+      <img src="{{image.image.url}}" >
+  </div>
+{% endfor %}
+
+  <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+  <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+  <div class="row mt-4">
+{% for image in gym_images %}
+    <div class="column ">
+      <img class="demo cursor" src="{{image.image.url}}"  onclick="currentSlide({{ forloop.counter }})" alt="The Woods">
+    </div>
+{% endfor %}
+  </div>
+</div>
+
+<p>{{gym.detail | safe}}</p>
+
+<div class='gym-contact-detail mb-4'>
+
+{% if gym_work_days %}
+<div class="gym-work-detail">
+
+<table>
+    <tr>
+        <th>
+            Günlər
+        </th>
+        <th>
+            İş saatları
+        </th>
+    </tr>
+    {% for day in gym_work_days %}
+    <tr>
+        <td>
+            {{day.day_of_week}}
+        </td>
+        <td>
+            {{day.work_day_hours}}
+        </td>
+    </tr>
+{% endfor %}
+
+</table>
+</div>
+{% endif %}
+
+
+
+      {% if gym_contact %}
+      <div class="containerContact-right-top">
+      {% for contact in gym_contact %}
+        <p class="bold-p" >Ünvan</p>
+        <div class='d-flex gym_center_contact'>
+         <div class='icon-contact'>
+            <i class="fas fa-map-marker-alt"></i>
+        </div>  
+        <div class='detail-contact'>
+            <p>{{ contact.gym_center.location }}</p>
+        </div>
+         </div>
+        <p class="bold-p mt-4" >Əlqə üçün:</p>
+         <p class="bold-p" ></p>
+        <div class='d-flex gym_center_contact'>
+         <div class='icon-contact'>
+            <i class='fa fa-phone'></i>
+        </div>  
+        <div class='detail-contact'>
+            <p>{{ contact.number }}</p>
+        </div>
+         </div>
+
+        {% if contact.email %}
+         <p class="bold-p" ></p>
+         <div class='d-flex gym_center_contact'>
+         <div class='icon-contact'>
+            <i class='fa fa-envelope'></i>
+        </div>  
+        <div class='detail-contact'>
+            <p>{{ contact.email }}</p>
+        </div>
+         </div>
+         {% endif %}
+              
+
+        {% if contact.instagram %}
+        <p class="bold-p "></p>
+        <div class='d-flex gym_center_contact'>
+         <div class='icon-contact'>
+         <a style='color:white' href="{{contact.instagram}}">
+          <i class='fab fa-instagram'></i>
+         </a>
+        </div>  
+        <div class='detail-contact'>
+            <p>Instagram</p>
+        </div>
+         </div>
+        {% endif %}
+
+        {% if contact.facebook %}
+        <p class="bold-p "></p>
+        <div class='d-flex gym_center_contact'>
+         <div class='icon-contact'>
+         <a style='color:white' href="{{contact.facebook}}">
+          <i class='fab fa-facebook'></i>
+         </a>
+        </div>  
+        <div class='detail-contact'>
+            <p>Facebook</p>
+        </div>
+         </div>
+        {% endif %}
+
+      {% endfor %}
+
+      </div>
+      {% endif %}
+
+</div>
+
+<div class='gymcenter-for-map mb-5'>
+{% csrf_token %}
+    {{m|safe}}
+</div>
+</div>
+
+
+
+{%  endblock %}
+
+
+
+
+
